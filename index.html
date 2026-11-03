@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garamonto Code</title>
+<meta name="description" content="Garamonto Code is a monospace serif based off Garamond meant for coding">
+<style>
+@font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode-Italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode-MediumItalic.woff2) format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode-BoldItalic.woff2) format("woff2");font-weight:700;font-style:italic;font-display:swap}
+
+:root{
+	--paper:#f5efe2; --sheet:#fbf7ee; --ink:#1d1814; --soft:#6d6253; --rule:#d9cfbc; --rubric:#a5301c;
+	--desk:#1c1713; --desk-2:#27211b; --desk-rule:#3b3228; --chalk:#ece2cf; --dim:#9a8c76;
+	--k:#e0a26b; --s:#b6c08a; --n:#e58f73; --f:#f0cf9c; --c:#a4957c;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+	--paper:#171310; --sheet:#1f1a15; --ink:#efe6d5; --soft:#a4977f; --rule:#3a3128; --rubric:#e8836a;
+	--desk:#100d0a; --desk-2:#1b1612; --desk-rule:#332b22;
+}}
+:root[data-theme="dark"]{
+	--paper:#171310; --sheet:#1f1a15; --ink:#efe6d5; --soft:#a4977f; --rule:#3a3128; --rubric:#e8836a;
+	--desk:#100d0a; --desk-2:#1b1612; --desk-rule:#332b22;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 "Garamonto Code",ui-monospace,monospace;font-variant-ligatures:contextual;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-color:var(--rubric);text-underline-offset:.2em;text-decoration-thickness:1px}
+a:hover{color:var(--rubric)}
+button,input,select{font:inherit;color:inherit}
+code,pre,kbd{font-family:inherit}
+:focus-visible{outline:2px solid var(--rubric);outline-offset:2px}
+.page{max-width:1120px;margin:0 auto;padding:0 32px}
+.noliga,.noliga *{font-variant-ligatures:none;font-feature-settings:"calt" 0}
+
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-size:16px}
+nav .links{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;white-space:nowrap}
+.mode{background:none;border:0;padding:0;cursor:pointer;font-style:italic;color:var(--soft)}
+.mode:hover{color:var(--rubric)}
+
+/* The wordmark stands on its own cells */
+.hero{padding:36px 0 56px}
+.mark{--size:min(18.6vw,204px);font-size:var(--size);line-height:1.02;margin:0;font-weight:400;
+	background-image:repeating-linear-gradient(90deg,var(--rule) 0 1px,transparent 1px .55em);background-position:0 0;width:max-content;max-width:100%;
+	border-right:1px solid var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.mark span{display:block}
+.mark .code{font-style:italic;color:var(--rubric);padding-left:5ch}
+.lede{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:end;margin-top:40px}
+.lede h2{font-size:clamp(28px,4.2vw,46px);line-height:1.18;font-weight:400;margin:0}
+.lede h2 em{color:var(--rubric)}
+.lede p{margin:0 0 18px;color:var(--soft)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:9px 18px;border:1px solid var(--ink);text-decoration:none;font-weight:500}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--rubric);border-color:var(--rubric);color:#fff}
+
+/* Editor */
+.desk{background:var(--desk);color:var(--chalk);border-radius:6px;overflow:hidden}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding:10px 16px;background:var(--desk-2);border-bottom:1px solid var(--desk-rule);font-size:15px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px 18px}
+.tabs button{background:none;border:0;padding:2px 0;cursor:pointer;color:var(--dim);border-bottom:1px solid transparent}
+.tabs button[aria-pressed="true"]{color:var(--chalk);border-bottom-color:var(--k)}
+.tabs button:hover{color:var(--chalk)}
+.opts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;color:var(--dim)}
+.opts label{display:flex;align-items:center;gap:7px;cursor:pointer}
+.opts select{background:var(--desk-2);border:1px solid var(--desk-rule);color:var(--chalk);padding:1px 4px}
+.opts input[type=range]{width:90px;accent-color:var(--k)}
+.opts input[type=checkbox]{accent-color:var(--k)}
+.edit{position:relative;--fs:17px;font-size:var(--fs);line-height:1.5;height:28.5em;overflow:hidden}
+.edit pre,.edit textarea{position:absolute;inset:0;margin:0;padding:22px 24px;border:0;font:inherit;font-weight:var(--wt,400);font-style:normal;line-height:inherit;white-space:pre;overflow:auto;tab-size:4;letter-spacing:0}
+.edit pre{pointer-events:none;overflow:hidden}
+.edit textarea{scrollbar-width:thin;scrollbar-color:var(--desk-rule) transparent;background:none;color:transparent;caret-color:var(--chalk);resize:none;outline:0}
+.edit textarea::selection{background:rgba(224,162,107,.3);color:transparent}
+.tk-k{color:var(--k);font-style:italic}
+.tk-s{color:var(--s)}
+.tk-n{color:var(--n)}
+.tk-f{color:var(--f)}
+.tk-c{color:var(--c);font-style:italic}
+.hint{margin:10px 0 0;font-size:15px;font-style:italic;color:var(--soft)}
+
+section{padding:76px 0 0}
+.head{display:flex;gap:.6ch;font-size:clamp(30px,4.6vw,48px);line-height:1.15;font-weight:400;margin:0 0 12px}
+.head::before{content:"§";color:var(--rubric);font-style:italic}
+.sub{max-width:62ch;margin:0 0 30px;color:var(--soft)}
+
+/* Letters */
+.letters{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.letters div{font-size:min(15.6vw,172px);line-height:1.2;white-space:nowrap;overflow:hidden}
+.letters .it{font-style:italic;color:var(--rubric);border-top:1px solid var(--rule)}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:40px}
+.cols h3{font-size:19px;font-weight:500;margin:0 0 6px}
+.cols p{margin:0;color:var(--soft);font-size:16.5px}
+.cols .big{font-size:clamp(46px,6.2vw,68px);line-height:1.15;margin:0 0 10px;white-space:nowrap;color:var(--ink)}
+.big .bad{color:var(--soft)}
+.onum{font-feature-settings:"onum" 1}
+
+/* Italic */
+.page-it{font-size:clamp(24px,3.9vw,42px);line-height:1.34;font-style:italic;margin:0;border-left:2px solid var(--rubric);padding-left:24px;overflow-wrap:anywhere}
+.page-it b{font-weight:400;color:var(--rubric)}
+
+/* Arrows */
+.arrows{font-size:clamp(34px,6vw,64px);line-height:1.5;display:grid;grid-template-columns:repeat(auto-fill,minmax(1.3em,1fr));margin:0;text-align:center;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.arrows span{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+/* Ligatures */
+.ligbar{display:flex;align-items:center;gap:9px;margin:0 0 22px;cursor:pointer;width:max-content}
+.ligbar input{accent-color:var(--rubric)}
+.ligs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 36px}
+.ligs h3{font-size:16px;font-weight:400;font-style:italic;color:var(--rubric);margin:0 0 6px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.ligs p{margin:0;font-size:30px;line-height:1.5;display:flex;flex-wrap:wrap;gap:0 .8ch}
+.ligs span{white-space:nowrap}
+.align{margin-top:40px;background:var(--sheet);border:1px solid var(--rule);padding:18px 22px;font-size:clamp(14px,2.2vw,21px);line-height:1.5;white-space:pre;overflow:auto}
+.align .kw{font-style:italic;color:var(--rubric)}
+
+/* Terminal */
+.term{font-size:clamp(11px,1.72vw,18px);line-height:normal;padding:20px 24px;margin:0;white-space:pre;overflow:auto}
+.term .g{color:var(--s)} .term .r{color:var(--n)} .term .y{color:var(--k)} .term .d{color:var(--dim)} .term .i{font-style:italic}
+
+/* Styles */
+.styles{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.styles li{display:grid;grid-template-columns:15ch minmax(0,1fr);gap:16px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--rule)}
+.styles small{font-size:15px;font-weight:400;font-style:normal;color:var(--soft)}
+.styles span{font-size:clamp(20px,3.1vw,32px);white-space:nowrap;overflow:hidden}
+.langs{margin:24px 0 0;font-size:clamp(20px,3vw,28px);line-height:1.5}
+
+/* Character map */
+.mapbar{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.mapbar input,.mapbar select{background:var(--sheet);border:1px solid var(--rule);padding:4px 8px}
+.mapbar input{flex:0 1 26ch;min-width:0}
+#info{flex:1 1 30ch;color:var(--soft);font-style:italic;min-height:1.55em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.block{content-visibility:auto;contain-intrinsic-size:auto 420px;scroll-margin-top:70px}
+.block h3{display:flex;justify-content:space-between;gap:16px;font-size:17px;font-weight:500;margin:26px 0 8px}
+.block h3 small{font-size:14px;font-weight:400;color:var(--soft)}
+.cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.cells.seq{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
+.cell{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:2px;background:var(--paper);padding:5px 2px 4px;cursor:pointer;min-width:0;font-weight:var(--mw,400);font-style:var(--ms,normal)}
+.cell b{font-weight:inherit;font-size:30px;line-height:normal;white-space:pre}
+.cell i{font-style:normal;font-weight:400;font-size:12px;color:var(--soft)}
+.cell:hover,.cell:focus-visible{background:var(--sheet);color:var(--rubric)}
+.cell:focus-visible{outline:2px solid var(--rubric);outline-offset:-2px}
+.cell[hidden],.block[hidden]{display:none}
+
+/* Install */
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 36px}
+.steps h3{font-size:18px;font-weight:500;margin:0 0 8px}
+.steps pre{margin:0;background:var(--sheet);border:1px solid var(--rule);padding:12px 14px;font:inherit;font-size:15.5px;line-height:1.5;overflow:auto}
+.note{margin:26px 0 0;color:var(--soft);max-width:62ch}
+
+footer{margin-top:90px;padding:26px 0 44px;border-top:1px solid var(--rule);font-size:15px;color:var(--soft);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 40px}
+footer p{margin:0;max-width:70ch}
+
+@media (max-width:820px){
+	.lede,.cols,.steps{grid-template-columns:minmax(0,1fr)}
+	.lede{gap:24px}
+	.ligs{grid-template-columns:repeat(2,minmax(0,1fr))}
+	section{padding-top:56px}
+}
+@media (max-width:560px){
+	body{font-size:17px}
+	.links a[href^="#"]{display:none}
+	.page{padding:0 16px}
+	.edit{--fs:14px}
+	.edit pre,.edit textarea{padding:16px}
+	.ligs p{font-size:24px}
+	.styles li{grid-template-columns:minmax(0,1fr);gap:0}
+	.term{padding:14px 12px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<nav>
+	<a href="#top"><strong>Garamonto Code</strong></a>
+	<div class="links">
+		<a href="#ligatures">Ligatures</a>
+		<a href="#characters">Characters</a>
+		<a href="#install">Install</a>
+		<a href="https://github.com/rizese/garamonto-code">GitHub</a>
+		<button class="mode" id="mode" type="button">dark</button>
+	</div>
+</nav>
+
+<header class="hero" id="top">
+	<h1 class="mark" aria-label="Garamonto Code"><span>Garamonto</span><span class="code">Code</span></h1>
+	<div class="lede">
+		<h2>Garamonto Code is a monospace serif based off Garamond <em>meant for coding</em></h2>
+		<div>
+			<div class="cta">
+				<a class="btn solid" href="https://github.com/rizese/garamonto-code/releases/latest/download/GaramontoCode.zip">Download</a>
+				<a class="btn" href="#try">Try it</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div id="try">
+	<div class="desk">
+		<div class="bar">
+			<div class="tabs" id="tabs" role="group" aria-label="Language"></div>
+			<div class="opts">
+				<label>Style
+					<select id="style">
+						<option value="400,normal">Regular</option>
+						<option value="400,italic">Italic</option>
+						<option value="500,normal">Medium</option>
+						<option value="500,italic">Medium Italic</option>
+						<option value="700,normal">Bold</option>
+						<option value="700,italic">Bold Italic</option>
+					</select>
+				</label>
+				<label>Size <input id="size" type="range" min="13" max="30" value="17" aria-label="Size"></label>
+				<label><input id="liga" type="checkbox" checked> Ligatures</label>
+			</div>
+		</div>
+		<div class="edit" id="edit">
+			<pre id="out" aria-hidden="true"></pre>
+			<textarea id="in" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Code to try the font on"></textarea>
+		</div>
+	</div>
+	<p class="hint">This is the real font. Click in and write something of your own.</p>
+</div>
+
+<section>
+	<h2 class="head">It still looks like Garamond</h2>
+	<p class="sub">Most coding fonts are drawn with one even line. These letters come from a type cut for books, so they keep their bowls, their tapered strokes and their small x-height, even at one fixed width.</p>
+	<div class="letters" aria-hidden="true">
+		<div>Rag&amp;Qfy{@}</div>
+		<div class="it">Rag&amp;Qfy{@}</div>
+	</div>
+	<div class="cols">
+		<div>
+			<p class="big">O0 il1</p>
+			<h3>Nothing to mistake</h3>
+			<p>The zero has a dot, and the <code>i</code>, <code>l</code> and <code>1</code> each have their own shape. The stylistic set <code>ss01</code> swaps in a plain zero.</p>
+		</div>
+		<div>
+			<p class="big"><span class="onum">1534</span> 1534</p>
+			<h3>Two sets of figures</h3>
+			<p>Lining figures for code, and old-style figures for prose and comments, through the <code>onum</code> feature.</p>
+		</div>
+		<div>
+			<p class="big">→ ⇒ ↩</p>
+			<h3>Arrows with a pen behind them</h3>
+			<p>Hairline shafts and swept heads, built from Garamond's own arrows rather than bolted on.</p>
+		</div>
+	</div>
+</section>
+
+<section>
+	<h2 class="head">A true italic for your comments</h2>
+	<p class="sub">Not the roman on a slant. The italic has its own cursive letters and a swash ampersand, so a comment reads like a note in the margin. Operators and arrows stay upright, so they still line up with the code around them.</p>
+	<p class="page-it">// first find the bug, <b>&amp;</b> only then fix it;<br>// the quick fox can wait for a <b>green</b> build.</p>
+</section>
+
+<section id="ligatures">
+	<h2 class="head">Ligatures that respect the grid</h2>
+	<p class="sub">More than 150 sequences join up as you type, and all of them are built from the font's own glyphs. A ligature takes exactly the cells of the characters it replaces, so nothing shifts and your cursor still lands on each one.</p>
+	<label class="ligbar"><input id="liga2" type="checkbox" checked> Show ligatures</label>
+	<div id="liglist">
+		<div class="ligs">
+			<div><h3>Arrows</h3><p>-&gt; &lt;- &lt;-&gt; =&gt; &lt;=&gt; --&gt; &lt;== |-&gt; -&gt;&gt;</p></div>
+			<div><h3>Equality</h3><p>== === != !== &lt;= &gt;= :=</p></div>
+			<div><h3>Pipes</h3><p>|&gt; &lt;| &lt;|&gt; || &gt;&gt;= =&lt;&lt;</p></div>
+			<div><h3>Waves</h3><p>~&gt; &lt;~ &lt;~&gt; ~~&gt; &lt;~~</p></div>
+			<div><h3>Logic</h3><p>&amp;&amp; &amp;&amp;&amp; :: // &gt;&gt; &lt;&lt;</p></div>
+			<div><h3>Comments</h3><p>&lt;!-- {!-- {{-- --}}</p></div>
+			<div><h3>Functors</h3><p>&lt;*&gt; &lt;$&gt; &lt;+&gt; &gt;=&gt;</p></div>
+			<div><h3>Italic too</h3><p style="font-style:italic">=&gt; != &amp;&amp; |&gt; ~&gt;</p></div>
+		</div>
+		<div class="align"><span class="kw">const</span> total   = items.filter(x =&gt; x.price &gt;= 10);
+<span class="kw">const</span> visible = items.filter(x =&gt; x.seen  !== true);
+<span class="kw">const</span> ready   = total.length  &gt; 0 &amp;&amp; visible.length &lt;= 99;</div>
+	</div>
+</section>
+
+<section>
+	<h2 class="head">At home in the terminal</h2>
+	<p class="sub">Box drawing joins from row to row, block elements fill the cell, and prompts, trees, graphs and braille all work. A sixteenth-century letter next to a build log turns out to be good company.</p>
+	<div class="desk"><pre class="term"><span class="g">➜</span> <span class="y">~/press</span> <span class="d">git:(main)</span> <span class="g">✓</span> ./status
+
+<span class="d">┌─────────────┬─────────┬──────────────────┬───────┐</span>
+<span class="d">│</span> service     <span class="d">│</span> region  <span class="d">│</span> load             <span class="d">│</span>       <span class="d">│</span>
+<span class="d">├─────────────┼─────────┼──────────────────┼───────┤</span>
+<span class="d">│</span> compositor  <span class="d">│</span> paris   <span class="d">│</span> <span class="g">██████████░░░░░░</span> <span class="d">│</span> <span class="g">✓ up</span>  <span class="d">│</span>
+<span class="d">│</span> <span class="i">proofreader</span> <span class="d">│</span> lyon    <span class="d">│</span> <span class="g">█████░░░░░░░░░░░</span> <span class="d">│</span> <span class="g">✓ up</span>  <span class="d">│</span>
+<span class="d">│</span> bindery     <span class="d">│</span> antwerp <span class="d">│</span> <span class="r">███████████████▌</span> <span class="d">│</span> <span class="r">✗ hot</span> <span class="d">│</span>
+<span class="d">└─────────────┴─────────┴──────────────────┴───────┘</span>
+
+fonts/                 cpu  <span class="y">▁▂▃▅▇█▇▅▃▂▁▂▃▄▅▆</span>
+├── regular.ttf        mem  <span class="g">⣀⣀⣠⣤⣤⣴⣶⣶⣾⣿⣿⣿⣿⣷⣶⣦</span>
+├── italic.ttf         net  <span class="d">░░▒▒▓▓██▓▓▒▒░░▒▒</span>
+└── bold.ttf
+
+<span class="g">➜</span> <span class="y">~/press</span> <span class="d">git:(main)</span> <span class="r">✗</span> <span class="d">█</span></pre></div>
+</section>
+
+<section>
+	<h2 class="head">Six styles</h2>
+	<p class="sub">Regular, Medium and Bold, each with its italic. Medium is there for dark themes and small sizes, where a Garamond can start to look thin.</p>
+	<ul class="styles">
+		<li><small>Regular</small><span>Sphinx of black quartz, judge my vow</span></li>
+		<li><small>Italic</small><span style="font-style:italic">Sphinx of black quartz, judge my vow</span></li>
+		<li><small>Medium</small><span style="font-weight:500">Sphinx of black quartz, judge my vow</span></li>
+		<li><small>Medium Italic</small><span style="font-weight:500;font-style:italic">Sphinx of black quartz, judge my vow</span></li>
+		<li><small>Bold</small><span style="font-weight:700">Sphinx of black quartz, judge my vow</span></li>
+		<li><small>Bold Italic</small><span style="font-weight:700;font-style:italic">Sphinx of black quartz, judge my vow</span></li>
+	</ul>
+	<p class="langs">Latin, Ελληνικά, Кириллица, and λx → x² ∀ ∈ ≡ ⌘ ⌥ ⏎</p>
+</section>
+
+<section id="install">
+	<h2 class="head">Install</h2>
+	<p class="sub"><a href="https://github.com/rizese/garamonto-code/releases/latest/download/GaramontoCode.zip">Download the fonts</a>, unzip them and install all six, then point your editor at it. It's free, under the SIL Open Font License.</p>
+	<div class="steps">
+		<div><h3>VS Code</h3><pre>"editor.fontFamily": "Garamonto Code",
+"editor.fontLigatures": true,
+"editor.fontSize": 15</pre></div>
+		<div><h3>Ghostty</h3><pre>font-family = Garamonto Code
+font-size = 15</pre></div>
+		<div><h3>kitty</h3><pre>font_family Garamonto Code
+font_size 15</pre></div>
+		<div><h3>On the web</h3><pre>@font-face {
+  font-family: "Garamonto Code";
+  src: url("GaramontoCode.woff2") format("woff2");
+}
+code { font-family: "Garamonto Code"; }</pre></div>
+	</div>
+	<p class="note">Garamond's small x-height makes it look a size smaller than most coding fonts, so start a point or two above your usual size. On dark themes, try Medium.</p>
+</section>
+
+<section id="characters">
+	<h2 class="head">Every character</h2>
+	<p class="sub" id="mapsub">The whole font, cell by cell. Click any character to copy it.</p>
+	<div class="mapbar">
+		<input id="mapq" type="search" placeholder="arrow, U+2192, →" aria-label="Search the characters">
+		<select id="mapstyle" aria-label="Style">
+			<option value="400,normal">Regular</option>
+			<option value="400,italic">Italic</option>
+			<option value="500,normal">Medium</option>
+			<option value="500,italic">Medium Italic</option>
+			<option value="700,normal">Bold</option>
+			<option value="700,italic">Bold Italic</option>
+		</select>
+		<span id="info" aria-live="polite"></span>
+	</div>
+	<div id="map"></div>
+</section>
+
+<footer>
+	<p>Garamonto Code, by Ricky Zese.</p>
+	<p><a href="https://github.com/rizese/garamonto-code">GitHub</a> · <a href="OFL.txt">License</a></p>
+</footer>
+
+</div>
+<script>
+const samples={
+TypeScript:{lang:"ts",code:`// Spread the slack between words, the way a compositor would.
+export function justify(words: string[], measure: number): string {
+  const ink = words.join("").length;
+  const gaps = words.length - 1;
+  if (gaps === 0 || ink >= measure) return words.join(" ");
+
+  const slack = measure - ink;
+  const pad = (i: number) => Math.floor(slack / gaps) + (i < slack % gaps ? 1 : 0);
+
+  // Early gaps take the extra space, so the right edge stays flush.
+  return words.reduce((line, word, i) => line + " ".repeat(pad(i - 1)) + word);
+}
+
+const proof = justify(["Claude", "Garamont", "cut", "this"], 40);
+console.log(proof.length !== 40 ? "overset" : proof);
+`},
+Python:{lang:"py",code:`# Set a galley of text to a fixed measure, one word at a time.
+def galley(text: str, measure: int = 66) -> list[str]:
+    lines, line = [], ""
+
+    for word in text.split():
+        if len(line) + len(word) + 1 > measure:
+            lines.append(line)
+            line = word
+        else:
+            line = f"{line} {word}" if line else word
+
+    return lines + [line] if line != "" else lines
+
+
+for number, line in enumerate(galley("The quick brown fox"), 1):
+    print(f"{number:>3} │ {line}")
+`},
+SQL:{lang:"sql",code:`-- Which founts are running low, and when were they last cast?
+SELECT f.name || ' ' || s.style AS fount,
+       COUNT(*) AS sorts,
+       SUM(s.weight) / 1000.0 AS kilos,
+       MAX(s.cast_at)::date AS last_cast
+FROM founts AS f
+JOIN sorts AS s ON s.fount_id = f.id
+WHERE s.cast_at >= '1534-01-01'
+  AND s.status <> 'melted'
+  AND f.retired != TRUE
+GROUP BY f.name, s.style
+HAVING COUNT(*) <= 500
+ORDER BY kilos DESC
+LIMIT 10;
+`},
+Rust:{lang:"rs",code:`/// Every glyph in a monospaced font takes one cell.
+const CELL: u32 = 550;
+
+fn columns(text: &str) -> impl Iterator<Item = (usize, char)> + '_ {
+    text.chars().enumerate().filter(|&(_, c)| c != '\\n')
+}
+
+fn width(text: &str, size: f32) -> f32 {
+    match text.chars().count() {
+        0 => 0.0,
+        n => n as f32 * CELL as f32 * size / 1000.0,
+    }
+}
+
+fn main() {
+    let line = "fn main() -> Result<(), Error>";
+    println!("{} columns, {:.1}px", columns(line).count(), width(line, 15.0));
+}
+`},
+Go:{lang:"go",code:`// Proof reports every line that runs past the measure.
+func Proof(lines []string, measure int) <-chan string {
+	out := make(chan string)
+
+	go func() {
+		defer close(out)
+		for n, line := range lines {
+			if len(line) > measure && line != "" {
+				out <- fmt.Sprintf("%d: over by %d", n+1, len(line)-measure)
+			}
+		}
+	}()
+
+	return out
+}
+`},
+Elixir:{lang:"ex",code:`defmodule Foundry do
+  # Cast, dress and count a fount of type.
+  def cast(sorts) do
+    sorts
+    |> Enum.map(&dress/1)
+    |> Enum.reject(&(&1.weight <= 0))
+    |> Enum.frequencies_by(& &1.char)
+  end
+
+  defp dress(%{height: h} = sort) when h >= 918 do
+    %{sort | shoulder: h - 918}
+  end
+
+  defp dress(sort), do: sort
+end
+`}};
+
+const words={
+ts:"export function const let return if else for while new class type interface import from async await string number boolean",
+py:"def return for in if else elif while class import from as with not and or None True False str int list",
+rs:"fn const let mut pub use impl struct enum match if else for while in as return self u32 f32 usize char str",
+go:"func package import return for range if else go defer make chan string int var type struct",
+ex:"defmodule def defp do end when if else case fn",
+sql:"SELECT AS FROM JOIN ON WHERE AND OR GROUP BY HAVING ORDER DESC LIMIT TRUE COUNT SUM MAX"};
+const hash={py:1,ex:1};
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function highlight(src,lang){
+	const comment=hash[lang]?"#.*":lang==="sql"?"--.*":"//.*";
+	const char=lang==="rs"?"|'(?:\\\\.|[^'\\\\])'":lang==="sql"?"|'[^']*'":"";
+	const re=new RegExp(`(${comment})|("(?:\\\\.|[^"\\\\])*"|\`[^\`]*\`${char})|\\b(\\d[\\d._]*)\\b|\\b([A-Za-z_]\\w*)\\b(?=\\s*\\()|\\b([A-Za-z_]\\w*)\\b`,"g");
+	const kw=new Set(words[lang].split(" "));
+	let html="",at=0;
+	for(const m of src.matchAll(re)){
+		html+=esc(src.slice(at,m.index));
+		at=m.index+m[0].length;
+		const [all,c,s,n,f,w]=m,t=esc(all);
+		if(c)html+=`<span class="tk-c">${t}</span>`;
+		else if(s)html+=`<span class="tk-s">${t}</span>`;
+		else if(n)html+=`<span class="tk-n">${t}</span>`;
+		else if(f)html+=kw.has(f)?`<span class="tk-k">${t}</span>`:`<span class="tk-f">${t}</span>`;
+		else html+=kw.has(w)?`<span class="tk-k">${t}</span>`:t;
+	}
+	return html+esc(src.slice(at))+"\n";
+}
+
+const input=document.getElementById("in"),out=document.getElementById("out"),edit=document.getElementById("edit"),tabs=document.getElementById("tabs");
+let lang="ts";
+const paint=()=>{out.innerHTML=highlight(input.value,lang);out.scrollTop=input.scrollTop;out.scrollLeft=input.scrollLeft};
+input.addEventListener("input",paint);
+input.addEventListener("scroll",()=>{out.scrollTop=input.scrollTop;out.scrollLeft=input.scrollLeft});
+input.addEventListener("keydown",e=>{
+	if(e.key!=="Tab")return;
+	e.preventDefault();
+	input.setRangeText("  ",input.selectionStart,input.selectionEnd,"end");
+	paint();
+});
+for(const name of Object.keys(samples)){
+	const b=document.createElement("button");
+	b.type="button";b.textContent=name;
+	b.setAttribute("aria-pressed","false");
+	b.onclick=()=>{
+		for(const x of tabs.children)x.setAttribute("aria-pressed",x===b);
+		lang=samples[name].lang;input.value=samples[name].code.trimEnd();input.scrollTop=0;paint();
+	};
+	tabs.appendChild(b);
+}
+tabs.firstChild.click();
+
+for(const p of document.querySelectorAll(".ligs p"))p.innerHTML=p.textContent.trim().split(" ").map(t=>`<span>${esc(t)}</span>`).join("");
+
+document.getElementById("size").oninput=e=>edit.style.setProperty("--fs",e.target.value+"px");
+document.getElementById("style").onchange=e=>{
+	const [w,s]=e.target.value.split(",");
+	edit.style.setProperty("--wt",w);
+	out.style.fontStyle=input.style.fontStyle=s;
+};
+document.getElementById("liga").onchange=e=>edit.classList.toggle("noliga",!e.target.checked);
+document.getElementById("liga2").onchange=e=>document.getElementById("liglist").classList.toggle("noliga",!e.target.checked);
+
+// Character map
+const map=document.getElementById("map"),info=document.getElementById("info");
+const hex=c=>"U+"+c.toString(16).toUpperCase().padStart(4,"0");
+function cell(glyph,label,copy,key,detail){
+	const b=document.createElement("button");
+	b.type="button";b.className="cell";b.dataset.k=key.toLowerCase();b.dataset.copy=copy;b.dataset.d=detail;
+	const g=document.createElement("b"),l=document.createElement("i");
+	g.textContent=glyph;l.textContent=label;
+	b.append(g,l);
+	return b;
+}
+function block(title,cells,seq){
+	const s=document.createElement("div"),h=document.createElement("h3"),n=document.createElement("small"),g=document.createElement("div");
+	s.className="block";g.className=seq?"cells seq":"cells";
+	h.textContent=title;n.textContent=cells.length;h.append(n);
+	g.append(...cells);s.append(h,g);
+	return s;
+}
+function buildMap(d){
+	const blocks=d.groups.map(([title,items])=>block(title,items.map(it=>{
+		const ch=String.fromCodePoint(it.c),c=cell((it.m?"◌":"")+ch,hex(it.c).slice(2),ch,`${it.n} ${it.a||""} ${hex(it.c)} ${ch}`,`${hex(it.c)} ${it.n}`);
+		if(it.i)c.dataset.italic="1";
+		return c;
+	})));
+	blocks.push(block("Alternates",d.alts.map(it=>{
+		const ch=String.fromCodePoint(it.c),c=cell(ch,it.f,ch,`${it.n} ${hex(it.c)} ${ch}`,`${hex(it.c)} ${it.n}`);
+		if(it.f==="locl")c.firstChild.lang="bg";
+		else c.firstChild.style.fontFeatureSettings=`"${it.f}" 1`;
+		return c;
+	})));
+	blocks.push(block("Ligatures",d.ligs.map(s=>{
+		const p=cell(s,s,s,`ligature ${s}`,`Ligature ${s}`);
+		p.lastChild.style.fontVariantLigatures="none";
+		return p;
+	}),true));
+	map.append(...blocks);
+	document.getElementById("mapsub").textContent=`The whole font, cell by cell: ${d.chars.toLocaleString("en")} characters, ${d.alts.length} alternates and ${d.ligs.length} ligatures. Click any of them to copy it.`;
+	applyStyle();
+}
+function applyMap(){
+	const q=document.getElementById("mapq").value.trim().toLowerCase();
+	const italic=map.style.getPropertyValue("--ms")==="italic";
+	for(const s of map.children){
+		let any=0;
+		for(const c of s.querySelectorAll(".cell")){
+			const show=(!q||c.dataset.k.includes(q))&&(!c.dataset.italic||italic);
+			c.hidden=!show;any+=show;
+		}
+		s.hidden=!any;
+	}
+}
+function applyStyle(){
+	const [w,st]=document.getElementById("mapstyle").value.split(",");
+	map.style.setProperty("--mw",w);map.style.setProperty("--ms",st);
+	applyMap();
+}
+async function copyText(text){
+	try{
+		await navigator.clipboard.writeText(text);
+		return true;
+	}catch{}
+	const t=document.createElement("textarea");
+	t.value=text;t.style.cssText="position:fixed;top:0;opacity:0";
+	document.body.append(t);t.select();
+	const ok=document.execCommand("copy");
+	t.remove();
+	return ok;
+}
+document.getElementById("mapq").oninput=applyMap;
+document.getElementById("mapstyle").onchange=applyStyle;
+map.addEventListener("click",async e=>{
+	const c=e.target.closest(".cell");
+	if(c)info.textContent=(await copyText(c.dataset.copy)?"Copied ":"Could not copy ")+c.dataset.d;
+});
+map.addEventListener("mouseover",e=>{
+	const c=e.target.closest(".cell");
+	if(c)info.textContent=c.dataset.d;
+});
+fetch("source/charmap.json").then(r=>r.json()).then(buildMap).catch(()=>{
+	document.getElementById("mapsub").textContent="The character map could not be loaded.";
+});
+
+const root=document.documentElement,mode=document.getElementById("mode");
+const isDark=()=>root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+const label=()=>mode.textContent=isDark()?"light":"dark";
+mode.onclick=()=>{root.dataset.theme=isDark()?"light":"dark";label()};
+label();
+</script>
+</body>
+</html>

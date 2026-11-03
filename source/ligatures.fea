@@ -1,0 +1,129 @@
+# Coding ligatures for Garamonto Code; the glyphs are drawn by ligatures.py.
+#
+# One contextual rule per ligature: every character but the last becomes the
+# empty spacer LIG, and the last becomes the ligature glyph, which draws over
+# the earlier cells. The first rule that matches wins, so longer sequences
+# come first, and "ignore" rules keep ligatures out of longer runs such as
+# --> or <<- that would otherwise be half-joined.
+#
+# ligatures.py fills in the @...@ markers from its tables of sequences.
+
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+lookup to_spacer {
+	sub [@SPACERS@] by LIG;
+} to_spacer;
+
+lookup end_hyphen_greater {
+	sub greater by hyphen_greater.liga;
+} end_hyphen_greater;
+
+lookup end_less_hyphen {
+	sub hyphenminus by less_hyphen.liga;
+} end_less_hyphen;
+
+lookup end_less_hyphen_greater {
+	sub greater by less_hyphen_greater.liga;
+} end_less_hyphen_greater;
+
+lookup end_equal_greater {
+	sub greater by equal_greater.liga;
+} end_equal_greater;
+
+lookup end_less_equal_greater {
+	sub greater by less_equal_greater.liga;
+} end_less_equal_greater;
+
+lookup end_exclam_equal {
+	sub equal by exclam_equal.liga;
+} end_exclam_equal;
+
+lookup end_exclam_equal_equal {
+	sub equal by exclam_equal_equal.liga;
+} end_exclam_equal_equal;
+
+lookup end_equal_equal {
+	sub equal by equal_equal.liga;
+} end_equal_equal;
+
+lookup end_equal_equal_equal {
+	sub equal by equal_equal_equal.liga;
+} end_equal_equal_equal;
+
+lookup end_less_equal {
+	sub equal by less_equal.liga;
+} end_less_equal;
+
+lookup end_greater_equal {
+	sub equal by greater_equal.liga;
+} end_greater_equal;
+
+@ENDS@
+feature calt {
+	lookup joined {
+@JOINED@	} joined;
+	lookup arrows {
+		ignore sub hyphenminus hyphenminus' greater;
+		ignore sub hyphenminus' greater greater;
+		ignore sub less less' hyphenminus;
+		ignore sub less' hyphenminus hyphenminus;
+		ignore sub less' hyphenminus greater greater;
+		ignore sub greater less' hyphenminus;
+		ignore sub hyphenminus less' hyphenminus;
+		sub less' lookup to_spacer hyphenminus' lookup to_spacer greater' lookup end_less_hyphen_greater;
+		sub less' lookup to_spacer hyphenminus' lookup end_less_hyphen;
+		sub hyphenminus' lookup to_spacer greater' lookup end_hyphen_greater;
+	} arrows;
+	lookup double_arrows {
+		ignore sub equal equal' greater;
+		ignore sub equal' greater greater;
+		ignore sub equal' greater equal;
+		ignore sub greater equal' greater;
+		ignore sub exclam equal' greater;
+		ignore sub less equal' greater;
+		ignore sub less less' equal greater;
+		ignore sub less' equal greater greater;
+		ignore sub greater less' equal greater;
+		ignore sub equal less' equal greater;
+		sub less' lookup to_spacer equal' lookup to_spacer greater' lookup end_less_equal_greater;
+		sub equal' lookup to_spacer greater' lookup end_equal_greater;
+	} double_arrows;
+	lookup equalities {
+		ignore sub exclam exclam' equal equal;
+		ignore sub equal exclam' equal equal;
+		ignore sub exclam' equal equal equal;
+		ignore sub exclam' equal equal greater;
+		ignore sub equal equal';
+		ignore sub exclam equal' equal;
+		ignore sub less equal' equal;
+		ignore sub greater equal' equal;
+		ignore sub equal' equal equal equal;
+		ignore sub equal' equal equal greater;
+		ignore sub equal' equal equal less;
+		ignore sub equal' equal greater;
+		ignore sub equal' equal less;
+		sub exclam' lookup to_spacer equal' lookup to_spacer equal' lookup end_exclam_equal_equal;
+		sub equal' lookup to_spacer equal' lookup to_spacer equal' lookup end_equal_equal_equal;
+		sub equal' lookup to_spacer equal' lookup end_equal_equal;
+	} equalities;
+	lookup comparisons {
+		ignore sub exclam exclam' equal;
+		ignore sub equal exclam' equal;
+		ignore sub exclam' equal equal;
+		ignore sub exclam' equal greater;
+		ignore sub less less' equal;
+		ignore sub equal less' equal;
+		ignore sub less' equal equal;
+		ignore sub less' equal less;
+		ignore sub less' equal greater;
+		ignore sub greater greater' equal;
+		ignore sub equal greater' equal;
+		ignore sub greater' equal equal;
+		ignore sub greater' equal less;
+		ignore sub greater' equal greater;
+		sub exclam' lookup to_spacer equal' lookup end_exclam_equal;
+		sub less' lookup to_spacer equal' lookup end_less_equal;
+		sub greater' lookup to_spacer equal' lookup end_greater_equal;
+	} comparisons;
+} calt;
