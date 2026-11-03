@@ -14,15 +14,18 @@
 @font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode-BoldItalic.woff2) format("woff2");font-weight:700;font-style:italic;font-display:swap}
 
 :root{
+	color-scheme:light;
 	--paper:#f5efe2; --sheet:#fbf7ee; --ink:#1d1814; --soft:#6d6253; --rule:#d9cfbc; --rubric:#a5301c;
 	--desk:#1c1713; --desk-2:#27211b; --desk-rule:#3b3228; --chalk:#ece2cf; --dim:#9a8c76;
 	--k:#e0a26b; --s:#b6c08a; --n:#e58f73; --f:#f0cf9c; --c:#a4957c;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+	color-scheme:dark;
 	--paper:#171310; --sheet:#1f1a15; --ink:#efe6d5; --soft:#a4977f; --rule:#3a3128; --rubric:#e8836a;
 	--desk:#100d0a; --desk-2:#1b1612; --desk-rule:#332b22;
 }}
 :root[data-theme="dark"]{
+	color-scheme:dark;
 	--paper:#171310; --sheet:#1f1a15; --ink:#efe6d5; --soft:#a4977f; --rule:#3a3128; --rubric:#e8836a;
 	--desk:#100d0a; --desk-2:#1b1612; --desk-rule:#332b22;
 }
@@ -85,7 +88,7 @@ nav a{text-decoration:none;white-space:nowrap}
 
 section{padding:76px 0 0}
 .head{display:flex;gap:.6ch;font-size:clamp(30px,4.6vw,48px);line-height:1.15;font-weight:400;margin:0 0 12px}
-.head::before{content:"§";color:var(--rubric);font-style:italic}
+.head::before{content:"§";color:var(--rubric);font-style:italic;font-size:.7em;align-self:center}
 .sub{max-width:62ch;margin:0 0 30px;color:var(--soft)}
 
 /* Letters */

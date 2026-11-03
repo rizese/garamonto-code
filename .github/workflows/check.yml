@@ -1,0 +1,22 @@
+# A pull request that changes what the fonts are built from has to bring the
+# rebuilt fonts with it, or the fonts in the repo fall behind their sources.
+name: Check
+
+on: pull_request
+
+jobs:
+  fonts-rebuilt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Fonts rebuilt with their sources
+        run: |
+          changed=$(git diff --name-only "origin/$GITHUB_BASE_REF"...HEAD)
+          sources=$(echo "$changed" | grep -E '^source/(.*\.sfd|build_font\.py|build_medium\.py|hinting\.py|ligatures\.py|ligatures\.fea)$' || true)
+          if [ -n "$sources" ] && ! echo "$changed" | grep -q '^fonts/'; then
+            echo "::error::These changed but the fonts in fonts/ didn't. Run make and commit the fonts."
+            echo "$sources"
+            exit 1
+          fi
