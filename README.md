@@ -1,9 +1,7 @@
 Garamonto Code
 ==============
 
-Garamonto Code is a monospace serif based off Garamond meant for coding. Its
-box drawing, block elements, Powerline and many math and technical symbols come
-from [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono).
+Garamonto Code is a monospace serif based off Garamond meant for coding.
 
 Weights: Regular, Medium and Bold, each with an italic.
 
@@ -34,14 +32,19 @@ make
 `make` rebuilds the fonts in `fonts/` from the `.sfd` files, adding the
 ligatures, the hinting and the Medium weights. The first time, it also sets up
 the Python environment the build uses, in `.venv`. `make site` rebuilds the
-character list on the showcase page and `make zip` packages a release.
+character list on the showcase page.
+
+Any change to `fonts/` pushed to `main` makes a new release, with
+`fonts/ttf/` and `fonts/webfonts/` zipped up for download.
 
 This font is licensed under the [SIL Open Font License](OFL.txt).
 
 <details>
 <summary><sub>The 485 characters still copied from JetBrains Mono</sub></summary>
 
-<sub>The boxes of `⍇ ⍈ ⍐ ⍗` are JetBrains Mono's too, around our own arrows.</sub>
+<sub>Box drawing, block elements, Powerline and many math and technical symbols
+come from [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono). The
+boxes of `⍇ ⍈ ⍐ ⍗` are JetBrains Mono's too, around our own arrows.</sub>
 
 - Mathematical operators: `∁∅∈∉∊∋∌∎∓∘∣∤∥∧∨∩∪∴∵∶∷∸∹∼∾≃≅≇≉≋≍≔≗≟≡≢≣≪≫≬≭≮≯≰≱≲≳≺≻≼⊂⊃⊄⊅⊆⊇⊈⊉⊎⊏⊐⊑⊒⊓⊔⊕⊖⊗⊘⊙⊛⊜⊝⊞⊟⊠⊡⊢⊣⊤⊥⊴⊸⊻⊼⊽⋂⋃⋄⋆⋈⋉⋊⋎⋐⋢⋮⋯⋰⋱`
 - Technical: `⌂⌃⌄⌅⌈⌉⌊⌋⌘⌜⌝⌞⌟⌤⌥⌦⌨⌫⌶⌷⌸⌹⌺⌻⌼⌽⌾⌿⍀⍁⍂⍃⍄⍅⍆⍉⍊⍋⍌⍍⍎⍏⍑⍒⍓⍔⍕⍖⍘⍙⍚⍛⍜⍝⍞⍟⍠⍡⍢⍣⍤⍥⍦⍧⍨⍩⍪⍫⍬⍭⍮⍯⍰⍱⍲⍳⍴⍵⍶⍷⍸⍹⍺⎉⎊⎋⎕⎛⎜⎝⎞⎟⎠⎡⎢⎣⎤⎥⎦⎧⎨⎩⎪⎫⎬⎭⏎⏻⏼⏽⏾`

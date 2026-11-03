@@ -1,0 +1,32 @@
+# Any change to the fonts on main makes a new release with them zipped up for
+# download, numbered one after the last: v1.0, v1.1, v1.2 and so on.
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths: ["fonts/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Zip the fonts
+        run: |
+          mkdir GaramontoCode
+          cp -R fonts/ttf fonts/webfonts OFL.txt GaramontoCode/
+          zip -qr -X GaramontoCode.zip GaramontoCode
+      - name: Make the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          last=$(gh release view --json tagName --jq .tagName 2>/dev/null || echo v1.-1)
+          major=${last%%.*}
+          next="$major.$(( ${last##*.} + 1 ))"
+          gh release create "$next" GaramontoCode.zip --target "$GITHUB_SHA" \
+            --title "Garamonto Code ${next#v}" \
+            --notes "Garamonto Code is a monospace serif based off Garamond meant for coding. Unzip and install the six fonts in the ttf folder. The webfonts folder is for websites."

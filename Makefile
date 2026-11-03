@@ -2,7 +2,6 @@
 #
 #   make          build the fonts in fonts/ from the sources in source/
 #   make site     rebuild the showcase page's character list
-#   make zip      package the fonts for a release, as build/GaramontoCode.zip
 #   make info     list the pages and links
 
 # FontForge's Python module (Homebrew), and a Python environment made with the
@@ -47,14 +46,6 @@ site: source/charmap.json
 source/charmap.json: ${TTF}/GaramontoCode.ttf ${TTF}/GaramontoCode-Italic.ttf source/build_charmap.py | .venv
 	${PYTHON} source/build_charmap.py ${TTF} $@
 
-.PHONY: zip
-zip: build/GaramontoCode.zip
-build/GaramontoCode.zip: $(STYLES:%=${TTF}/%.ttf) OFL.txt
-	rm -rf build/zip $@ && mkdir -p build/zip/GaramontoCode
-	cp $^ build/zip/GaramontoCode/
-	cd build/zip && zip -qr -X ../GaramontoCode.zip GaramontoCode
-	rm -rf build/zip
-
 PORT ?= 8793
 LOCAL := http://127.0.0.1:${PORT}
 
@@ -67,7 +58,3 @@ info:
 	@echo "Download               https://github.com/rizese/garamonto-code/releases/latest/download/GaramontoCode.zip"
 	@curl -s -o /dev/null ${LOCAL}/ && echo "The local server is running on port ${PORT}." \
 	|| echo "The local server is not running: python3 -m http.server ${PORT} --bind 127.0.0.1"
-
-.PHONY: clean
-clean:
-	rm -rf build
