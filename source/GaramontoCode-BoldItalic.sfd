@@ -22,7 +22,7 @@ OS2Version: 4
 OS2_WeightWidthSlopeOnly: 1
 OS2_UseTypoMetrics: 1
 CreationTime: 1793382924
-ModificationTime: 1793636776
+ModificationTime: 1793722160
 PfmFamily: 49
 TTFWeight: 700
 TTFWidth: 5
@@ -39298,11 +39298,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 354 m 1
- 0 1007 l 1
- 550 1007 l 1
- 550 354 l 1
- 0 354 l 1
+-16 354 m 1
+ -16 1023 l 1
+ 566 1023 l 1
+ 566 354 l 1
+ -16 354 l 1
 EndSplineSet
 EndChar
 
@@ -39314,11 +39314,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 -135 l 1
- 550 -135 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 -135 l 1
+ 566 -135 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39330,11 +39330,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 28 l 1
- 550 28 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 28 l 1
+ 566 28 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39346,11 +39346,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 191 l 1
- 550 191 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 191 l 1
+ 566 191 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39362,11 +39362,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 354 l 1
- 550 354 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 354 l 1
+ 566 354 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39378,11 +39378,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 518 l 1
- 550 518 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 518 l 1
+ 566 518 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39394,11 +39394,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 681 l 1
- 550 681 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 681 l 1
+ 566 681 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39410,11 +39410,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 844 l 1
- 550 844 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 844 l 1
+ 566 844 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39426,11 +39426,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 550 1007 l 1
- 550 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 566 1023 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39442,11 +39442,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 481 1007 l 1
- 481 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 481 1023 l 1
+ 481 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39458,11 +39458,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 412 1007 l 1
- 412 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 412 1023 l 1
+ 412 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39474,11 +39474,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 344 1007 l 1
- 344 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 344 1023 l 1
+ 344 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39490,11 +39490,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 275 1007 l 1
- 275 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 275 1023 l 1
+ 275 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39506,11 +39506,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 183 1007 l 1
- 183 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 183 1023 l 1
+ 183 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39522,11 +39522,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 138 1007 l 1
- 138 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 138 1023 l 1
+ 138 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39538,11 +39538,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 69 1007 l 1
- 69 -298 l 1
- 0 -298 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 69 1023 l 1
+ 69 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -39554,11 +39554,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-275 -298 m 1
- 275 1007 l 1
- 550 1007 l 1
- 550 -298 l 1
- 275 -298 l 1
+275 -314 m 1
+ 275 1023 l 1
+ 566 1023 l 1
+ 566 -314 l 1
+ 275 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40691,11 +40691,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 844 m 1
- 0 1007 l 1
- 550 1007 l 1
- 550 844 l 1
- 0 844 l 1
+-16 844 m 1
+ -16 1023 l 1
+ 566 1023 l 1
+ 566 844 l 1
+ -16 844 l 1
 EndSplineSet
 EndChar
 
@@ -40707,11 +40707,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-481 -298 m 1
- 481 1007 l 1
- 550 1007 l 1
- 550 -298 l 1
- 481 -298 l 1
+481 -314 m 1
+ 481 1023 l 1
+ 566 1023 l 1
+ 566 -314 l 1
+ 481 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40723,11 +40723,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 354 l 1
+-16 -314 m 1
+ -16 354 l 1
  275 354 l 1
- 275 -298 l 1
- 0 -298 l 1
+ 275 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40739,11 +40739,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-275 -298 m 1
+275 -314 m 1
  275 354 l 1
- 550 354 l 1
- 550 -298 l 1
- 275 -298 l 1
+ 566 354 l 1
+ 566 -314 l 1
+ 275 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40755,11 +40755,11 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 354 m 1
- 0 1007 l 1
- 275 1007 l 1
+-16 354 m 1
+ -16 1023 l 1
+ 275 1023 l 1
  275 354 l 1
- 0 354 l 1
+ -16 354 l 1
 EndSplineSet
 EndChar
 
@@ -40771,13 +40771,13 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 275 1007 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 275 1023 l 1
  275 354 l 1
- 550 354 l 1
- 550 -298 l 1
- 0 -298 l 1
+ 566 354 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40789,16 +40789,16 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 354 m 1
- 0 1007 l 1
- 275 1007 l 1
+-16 354 m 1
+ -16 1023 l 1
+ 275 1023 l 1
  275 354 l 1
- 0 354 l 1
-275 -298 m 1
+ -16 354 l 1
+275 -314 m 1
  275 354 l 1
- 550 354 l 1
- 550 -298 l 1
- 275 -298 l 1
+ 566 354 l 1
+ 566 -314 l 1
+ 275 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40810,13 +40810,13 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 1007 l 1
- 550 1007 l 1
- 550 354 l 1
+-16 -314 m 1
+ -16 1023 l 1
+ 566 1023 l 1
+ 566 354 l 1
  275 354 l 1
- 275 -298 l 1
- 0 -298 l 1
+ 275 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40828,13 +40828,13 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-275 -298 m 1
+275 -314 m 1
  275 354 l 1
- -9 354 l 1
- -9 1007 l 1
- 550 1007 l 1
- 550 -298 l 1
- 275 -298 l 1
+ -25 354 l 1
+ -25 1023 l 1
+ 566 1023 l 1
+ 566 -314 l 1
+ 275 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40847,9 +40847,9 @@ LayerCount: 2
 Fore
 SplineSet
 275 354 m 1
- 275 1007 l 1
- 550 1007 l 1
- 550 354 l 1
+ 275 1023 l 1
+ 566 1023 l 1
+ 566 354 l 1
  275 354 l 1
 EndSplineSet
 EndChar
@@ -40863,15 +40863,15 @@ LayerCount: 2
 Fore
 SplineSet
 275 354 m 1
- 275 1007 l 1
- 550 1007 l 1
- 550 354 l 1
+ 275 1023 l 1
+ 566 1023 l 1
+ 566 354 l 1
  275 354 l 1
-0 -298 m 1
- 0 354 l 1
+-16 -314 m 1
+ -16 354 l 1
  275 354 l 1
- 275 -298 l 1
- 0 -298 l 1
+ 275 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
@@ -40883,13 +40883,13 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-0 -298 m 1
- 0 354 l 1
+-16 -314 m 1
+ -16 354 l 1
  275 354 l 1
- 275 1007 l 1
- 550 1007 l 1
- 550 -298 l 1
- 0 -298 l 1
+ 275 1023 l 1
+ 566 1023 l 1
+ 566 -314 l 1
+ -16 -314 l 1
 EndSplineSet
 EndChar
 
