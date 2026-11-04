@@ -12,6 +12,11 @@
 <meta property="og:image" content="https://rizese.github.io/garamonto-code/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:video" content="https://rizese.github.io/garamonto-code/og.mp4">
+<meta property="og:video:secure_url" content="https://rizese.github.io/garamonto-code/og.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="1200">
+<meta property="og:video:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 @font-face{font-family:"Garamonto Code";src:url(fonts/webfonts/GaramontoCode.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -384,7 +389,7 @@ export function justify(words: string[], measure: number): string {
   return words.reduce((line, word, i) => line + " ".repeat(pad(i - 1)) + word);
 }
 
-const proof = justify(["Claude", "Garamont", "cut", "this"], 40);
+const proof = justify(["set", "in", "Garamonto", "Code"], 40);
 console.log(proof.length !== 40 ? "overset" : proof);
 `},
 Python:{lang:"py",code:`# Set a galley of text to a fixed measure, one word at a time.
