@@ -8,7 +8,7 @@ Weights: Regular, Medium and Bold, each with an italic.
 - 150 coding ligatures through `calt`, each exactly as wide as the characters it
   replaces. Apps that turn ligatures off show the plain characters.
 - Arrows built from Garamond's own.
-- A dotted zero. `ss01` switches to a plain zero, an alternate `l` and an
+- A slashed zero. `ss01` switches to a plain zero, an alternate `l` and an
   alternate hyphen.
 - Old-style figures through `onum`.
 
